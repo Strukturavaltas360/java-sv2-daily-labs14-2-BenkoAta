@@ -104,4 +104,9 @@ class OrderServiceTest {
             assertTrue(order.getProducts().get(2).getCategory().equals("Book"));
         }
     }
+
+    @Test
+    void findOrderedProductsWithPriceGreaterThan() {
+        System.out.println(orderService.findOrderedProductsWithPriceGreaterThan(10));
+    }
 }

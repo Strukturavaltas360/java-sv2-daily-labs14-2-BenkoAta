@@ -48,4 +48,11 @@ public class OrderService {
                         .anyMatch(product -> product.getCategory().equals(category)))
                 .collect(Collectors.toList());
     }
+
+    public List<Product> findOrderedProductsWithPriceGreaterThan(int minPrice) {
+        return orders.stream()
+                .flatMap(order -> order.getProducts().stream())
+                .filter(product -> product.getPrice() > minPrice)
+                .toList();
+    }
 }
