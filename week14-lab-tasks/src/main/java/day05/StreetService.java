@@ -22,11 +22,7 @@ public class StreetService {
         String[] parts = s.split(" ");
         String street = parts[0];
         int number = Integer.parseInt(parts[1]);
-        List<Integer> numberList = result.get(street);
-        if (numberList == null) {
-            numberList = new ArrayList<>();
-            result.put(street, numberList);
-        }
+        List<Integer> numberList = result.computeIfAbsent(street, s1 -> new ArrayList<>());
         int max = numberList.stream()
                 .filter(i -> i % 2 == number)
                 .sorted(Comparator.reverseOrder())
